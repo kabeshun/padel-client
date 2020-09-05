@@ -1,1 +1,9 @@
-
+ion-tabs {
+  ion-tab-bar {
+    ion-tab-button {
+      ion-icon {
+        color: var(--ion-color-main-blue);
+      }
+    }
+  }
+}
