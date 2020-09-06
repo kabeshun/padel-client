@@ -11,11 +11,20 @@ export class FacilityService {
   param: any;
   constructor(private api: ApiService) {}
 
-  loadFacilities(): Observable<any[]> {
+  loadFacilities(): Observable<Facility[]> {
     let params = {};
     return this.api.get("api/v1/facilities", params).pipe(
       map((data) => {
         return data as Array<Facility>;
+      })
+    );
+  }
+
+  loadFacility(facility_id: number): Observable<Facility> {
+    let params = {};
+    return this.api.get("api/v1/facilities/" + facility_id, params).pipe(
+      map((data) => {
+        return new Facility(data);
       })
     );
   }

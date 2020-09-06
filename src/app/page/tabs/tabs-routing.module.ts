@@ -23,6 +23,13 @@ const routes: Routes = [
           import("../mypage/mypage.module").then((m) => m.MypagePageModule),
       },
       {
+        path: "search/facility",
+        loadChildren: () =>
+          import("../facility/facility.module").then(
+            (m) => m.FacilityPageModule
+          ),
+      },
+      {
         path: "",
         redirectTo: "/tabs/search",
         pathMatch: "full",

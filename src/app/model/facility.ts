@@ -1,6 +1,8 @@
 export class Facility {
   id: number;
   name: string;
+  description: string;
+  address: string;
   image_url: string;
   created_at: Date;
 
@@ -16,6 +18,14 @@ export class Facility {
 
   getName(): string {
     return this.name;
+  }
+
+  getDescription(): string {
+    return this.description;
+  }
+
+  getAddress(): string {
+    return this.address;
   }
 
   getImageUrl(): string {
