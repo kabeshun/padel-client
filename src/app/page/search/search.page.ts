@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { NavController } from "@ionic/angular";
 import { FacilityService } from "../../service/facility.service";
 import { Facility } from "../../model/facility";
+import { FacilityPage } from "../facility/facility.page";
+import { NavigationExtras, Router } from "@angular/router";
 
 @Component({
   selector: "app-search",
@@ -13,7 +15,8 @@ export class SearchPage {
   times: any[];
   constructor(
     private facilityService: FacilityService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private router: Router
   ) {
     this.facilityService.loadFacilities().subscribe((facilities) => {
       facilities = facilities.map((facilities) => new Facility(facilities));
@@ -22,6 +25,7 @@ export class SearchPage {
       console.error(this.facilities);
       console.error(this.facilities);
     });
+
     this.times = [
       "9:00",
       "9:30",
@@ -43,8 +47,12 @@ export class SearchPage {
   }
 
   selectTime(time: any, facility: Facility): void {
-    console.error(time);
-    console.error(facility);
-    this.navCtrl.navigateForward("/facility");
+    let navigationExtras: NavigationExtras = {
+      queryParams: { id: facility.getId(), time: time },
+      state: {
+        facility: facility,
+      },
+    };
+    this.router.navigate(["/tabs/search/facility"], navigationExtras);
   }
 }

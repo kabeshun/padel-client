@@ -8,8 +8,11 @@ const routes: Routes = [
       import("./page/tabs/tabs.module").then((m) => m.TabsPageModule),
   },
   {
-    path: 'facility',
-    loadChildren: () => import('./page/facility/facility.module').then( m => m.FacilityPageModule)
+    path: "facility",
+    loadChildren: () =>
+      import("./page/facility/facility.module").then(
+        (m) => m.FacilityPageModule
+      ),
   },
 ];
 @NgModule({
