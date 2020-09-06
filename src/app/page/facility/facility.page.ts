@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Facility } from "src/app/model/facility";
 import { FacilityService } from "src/app/service/facility.service";
-import { NavController } from "@ionic/angular";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-facility",
@@ -18,7 +18,7 @@ export class FacilityPage {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private facilityService: FacilityService,
-    private navCtrl: NavController
+    private location: Location
   ) {
     this.checkUrlAndQueryParams();
 
@@ -90,6 +90,6 @@ export class FacilityPage {
   }
 
   back(): void {
-    this.navCtrl.back();
+    this.location.back();
   }
 }

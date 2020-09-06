@@ -5,6 +5,35 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ng-container *ngIf="skeletonLoading">
+    <ng-container *ngFor="let facility of facilities">
+      <div class="image-skeleton">
+        <ion-skeleton-text
+          animated
+          style="width: 93%; height: 124px; margin: 8px 8px 0px 8px"
+        ></ion-skeleton-text>
+      </div>
+      <div class="time-skeleton">
+        <ion-skeleton-text
+          animated
+          style="width: 20%; height: 32px; margin: 8px 8px 4px 8px"
+        ></ion-skeleton-text>
+        <ion-skeleton-text
+          animated
+          style="width: 20%; height: 32px; margin: 8px 8px 4px 8px"
+        ></ion-skeleton-text>
+        <ion-skeleton-text
+          animated
+          style="width: 20%; height: 32px; margin: 8px 8px 4px 8px"
+        ></ion-skeleton-text>
+        <ion-skeleton-text
+          animated
+          style="width: 20%; height: 32px; margin: 8px 8px 4px 8px"
+        ></ion-skeleton-text>
+      </div>
+    </ng-container>
+  </ng-container>
+
   <ng-container *ngFor="let facility of facilities">
     <div class="facility-wrapper">
       <div

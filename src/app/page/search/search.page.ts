@@ -13,17 +13,18 @@ import { NavigationExtras, Router } from "@angular/router";
 export class SearchPage {
   facilities: Facility[];
   times: any[];
+  skeletonLoading: boolean = true;
   constructor(
     private facilityService: FacilityService,
-    private navCtrl: NavController,
-    private router: Router
+    private navCtrl: NavController
   ) {
     this.facilityService.loadFacilities().subscribe((facilities) => {
-      facilities = facilities.map((facilities) => new Facility(facilities));
-      this.facilities = [];
-      this.facilities = facilities;
-      console.error(this.facilities);
-      console.error(this.facilities);
+      setTimeout(() => {
+        facilities = facilities.map((facilities) => new Facility(facilities));
+        this.facilities = [];
+        this.facilities = facilities;
+        this.skeletonLoading = false;
+      }, 1000);
     });
 
     this.times = [
@@ -53,6 +54,6 @@ export class SearchPage {
         facility: facility,
       },
     };
-    this.router.navigate(["/tabs/search/facility"], navigationExtras);
+    this.navCtrl.navigateForward(["/tabs/search/facility"], navigationExtras);
   }
 }
