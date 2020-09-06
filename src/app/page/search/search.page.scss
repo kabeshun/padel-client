@@ -39,23 +39,22 @@ ion-content {
         z-index: 2;
       }
     }
-    .time-wrapper {
-      div[scrollx="true"],
-      div[scrolly="true"] {
-        position: relative;
-        overflow: hidden;
-
-        ::-webkit-scrollbar {
-          display: none;
+    .time-scroller {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      .time-wrapper {
+        margin: 4px 4px 12px 4px;
+        padding: 12px 20px 12px 20px;
+        border-radius: 4px;
+        background-color: #ffc790;
+        .time-text {
+          color: #714418;
+          font-size: 16px;
         }
-      }
-
-      div[scrollx="true"] {
-        overflow-x: auto;
-      }
-
-      div[scrolly="true"] {
-        overflow-y: auto;
       }
     }
   }

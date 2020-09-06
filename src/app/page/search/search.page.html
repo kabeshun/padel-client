@@ -13,8 +13,12 @@
       >
         <div class="facility-name">{{ facility.getName() }}</div>
       </div>
-      <div scrollx="true">
-        <ng-container *ngFor="let time of times"> {{ time }} </ng-container>
+      <div class="time-scroller">
+        <ng-container *ngFor="let time of times">
+          <div class="time-wrapper">
+            <div class="time-text">{{ time }}</div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </ng-container>
