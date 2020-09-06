@@ -15,7 +15,7 @@
       </div>
       <div class="time-scroller">
         <ng-container *ngFor="let time of times">
-          <div class="time-wrapper">
+          <div class="time-wrapper" (click)="selectTime(time, facility)">
             <div class="time-text">{{ time }}</div>
           </div>
         </ng-container>

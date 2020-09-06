@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
+import { NavController } from "@ionic/angular";
 import { FacilityService } from "../../service/facility.service";
 import { Facility } from "../../model/facility";
-import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-search",
@@ -11,8 +11,10 @@ import { map } from "rxjs/operators";
 export class SearchPage {
   facilities: Facility[];
   times: any[];
-  constructor(private facilityService: FacilityService) {
-    let params = {};
+  constructor(
+    private facilityService: FacilityService,
+    private navCtrl: NavController
+  ) {
     this.facilityService.loadFacilities().subscribe((facilities) => {
       facilities = facilities.map((facilities) => new Facility(facilities));
       this.facilities = [];
@@ -38,5 +40,11 @@ export class SearchPage {
       "16:00",
       "16:30",
     ];
+  }
+
+  selectTime(time: any, facility: Facility): void {
+    console.error(time);
+    console.error(facility);
+    this.navCtrl.navigateForward("/facility");
   }
 }
