@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> 探す </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngFor="let facility of facilities">
+    <div class="facility-wrapper">
+      <div
+        class="facility-image"
+        [ngStyle]="{ 'background-image': 'url(' + facility.getImageUrl() + ')' }"
+      >
+        <div class="facility-name">{{ facility.getName() }}</div>
+      </div>
+      <div scrollx="true">
+        <ng-container *ngFor="let time of times"> {{ time }} </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>

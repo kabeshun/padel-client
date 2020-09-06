@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { MypagePage } from "./mypage.page";
-import { ExploreContainerComponentModule } from "../explore-container/explore-container.module";
 
 import { MypagePageRoutingModule } from "./mypage-routing.module";
 
@@ -13,7 +12,6 @@ import { MypagePageRoutingModule } from "./mypage-routing.module";
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
     RouterModule.forChild([{ path: "", component: MypagePage }]),
     MypagePageRoutingModule,
   ],
