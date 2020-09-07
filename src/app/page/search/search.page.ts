@@ -19,10 +19,10 @@ export class SearchPage {
     private navCtrl: NavController
   ) {
     this.facilityService.loadFacilities().subscribe((facilities) => {
+      facilities = facilities.map((facilities) => new Facility(facilities));
+      this.facilities = [];
+      this.facilities = facilities;
       setTimeout(() => {
-        facilities = facilities.map((facilities) => new Facility(facilities));
-        this.facilities = [];
-        this.facilities = facilities;
         this.skeletonLoading = false;
       }, 1000);
     });

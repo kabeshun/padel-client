@@ -14,6 +14,10 @@ const routes: Routes = [
         (m) => m.FacilityPageModule
       ),
   },
+  {
+    path: 'onboarding',
+    loadChildren: () => import('./page/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
+  },
 ];
 @NgModule({
   imports: [
