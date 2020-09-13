@@ -11,6 +11,7 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularTokenModule } from "angular-token";
 import { FormsModule } from "@angular/forms";
+import { AppConfig } from "./app.config";
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,7 @@ import { FormsModule } from "@angular/forms";
     FormsModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
-      apiBase: "http://0.0.0.0:3000",
+      apiBase: AppConfig.API_URL,
       apiPath: "api/v1",
       registerAccountPath: "auth",
       signInPath: "auth/sign_in",
