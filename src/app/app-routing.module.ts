@@ -15,8 +15,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'onboarding',
-    loadChildren: () => import('./page/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
+    path: "onboarding",
+    loadChildren: () =>
+      import("./page/onboarding/onboarding.module").then(
+        (m) => m.OnboardingPageModule
+      ),
   },
 ];
 @NgModule({

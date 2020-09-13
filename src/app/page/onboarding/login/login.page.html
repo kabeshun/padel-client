@@ -3,17 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" text=""> </ion-back-button>
     </ion-buttons>
-    <ion-title>ユーザ登録</ion-title>
+    <ion-title>ログイン</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-wrapper">
-    <form [formGroup]="registerForm" (onSubmit)="register()">
-      <div class="input-column">
-        <ion-label>名前</ion-label>
-        <input placeholder="Padel Tarou" formControlName="name" />
-      </div>
+    <form [formGroup]="loginForm" (onSubmit)="register()">
       <div class="input-column">
         <ion-label>メールアドレス</ion-label>
         <input
@@ -26,16 +22,9 @@
         <ion-label>パスワード</ion-label>
         <input type="password" formControlName="password" />
       </div>
-      <div class="input-column">
-        <ion-label>パスワード確認</ion-label>
-        <input type="password" formControlName="passwordConfirmation" />
-      </div>
     </form>
     <ion-button [disabled]="isDisabled()" (click)="register()" color="primary"
-      >登録する</ion-button
+      >ログイン</ion-button
     >
-    <div class="login-text" (click)="goLoginPage()">
-      すでに登録されてる方はこちら
-    </div>
   </div>
 </ion-content>

@@ -9,41 +9,28 @@ import { AngularTokenService } from "angular-token";
 import { UserService } from "../../../service/user.service";
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.page.html",
-  styleUrls: ["./register.page.scss"],
+  selector: "app-login",
+  templateUrl: "./login.page.html",
+  styleUrls: ["./login.page.scss"],
 })
-export class RegisterPage implements OnInit {
+export class LoginPage implements OnInit {
   name: string;
   email: string;
   password: string;
   passwordConfirmation: string;
-  registerForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private userService: UserService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private navCtrl: NavController,
-    private tokenService: AngularTokenService
+    private navCtrl: NavController
   ) {
     //TODO: Detailed Validation
-    this.registerForm = new FormGroup(
+    this.loginForm = new FormGroup(
       {
         email: new FormControl("", Validators.compose([Validators.required])),
-        name: new FormControl(
-          "",
-          Validators.compose([
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(15),
-          ])
-        ),
         password: new FormControl(
-          "",
-          Validators.compose([Validators.required, Validators.minLength(6)])
-        ),
-        passwordConfirmation: new FormControl(
           "",
           Validators.compose([Validators.required, Validators.minLength(6)])
         ),
@@ -58,11 +45,9 @@ export class RegisterPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     this.userService
-      .angularTokenRegister(
-        this.registerForm.value["name"],
-        this.registerForm.value["email"],
-        this.registerForm.value["password"],
-        this.registerForm.value["passwordConfirmation"]
+      .angularTokenSignIn(
+        this.loginForm.value["email"],
+        this.loginForm.value["password"]
       )
       .subscribe(
         async (res) => {
@@ -74,7 +59,7 @@ export class RegisterPage implements OnInit {
           console.log(error);
           await loading.dismiss();
           const alert = await this.alertCtrl.create({
-            message: "ユーザの登録に失敗しました",
+            message: "ログインに失敗しました",
             buttons: ["OK"],
           });
           await alert.present();
@@ -87,6 +72,6 @@ export class RegisterPage implements OnInit {
   }
 
   isDisabled(): boolean {
-    return this.registerForm.invalid;
+    return this.loginForm.invalid;
   }
 }

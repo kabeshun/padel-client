@@ -13,21 +13,11 @@ export class OnboardingPage {
     private navCtrl: NavController,
     private userService: UserService,
     private tokenService: AngularTokenService
-  ) {
-    console.error(this.tokenService.userSignedIn());
-  }
+  ) {}
 
   mailLogin() {
     console.log("mail");
-    //this.navCtrl.navigateForward("/tabs/search");
-    this.userService.signUp().subscribe(
-      () => {
-        console.log("aaaa");
-      },
-      () => {
-        console.log("error");
-      }
-    );
+    this.navCtrl.navigateForward("/onboarding/register");
   }
 
   facebookLogin() {
@@ -35,14 +25,10 @@ export class OnboardingPage {
   }
 
   appleLogin() {
-    this.userService.angularTokenSignIn().subscribe(
-      (res) => {
-        console.log(res);
-        this.navCtrl.navigateForward("/onboarding/register");
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    console.log("apple");
+  }
+
+  goMailLoginPage() {
+    this.navCtrl.navigateForward("/onboarding/login");
   }
 }

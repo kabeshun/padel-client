@@ -31,6 +31,7 @@ export class AppComponent {
         this.navCtrl.navigateRoot("/onboarding");
       } else {
         console.log("logged in");
+        this.navCtrl.navigateRoot("/tabs/search");
       }
     });
   }

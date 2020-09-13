@@ -23,8 +23,10 @@ import { FormsModule } from "@angular/forms";
     HttpClientModule,
     AngularTokenModule.forRoot({
       apiBase: "http://0.0.0.0:3000",
-      registerAccountPath: "api/v1/auth",
-      signInPath: "api/v1/auth/sign_in",
+      apiPath: "api/v1",
+      registerAccountPath: "auth",
+      signInPath: "auth/sign_in",
+      signOutPath: "auth/sign_out",
     }),
   ],
   providers: [

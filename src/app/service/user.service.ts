@@ -46,11 +46,15 @@ export class UserService {
     });
   }
 
-  angularTokenSignIn(): Observable<any> {
+  angularTokenSignIn(email: string, password: string): Observable<any> {
     return this.tokenService.signIn({
-      login: "example@example.org",
-      password: "secretPassword",
+      login: email,
+      password: password,
     });
+  }
+
+  angularTokenSignOut(): Observable<any> {
+    return this.tokenService.signOut();
   }
 
   login(): Observable<any> {
