@@ -8,7 +8,6 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class FacilityService {
-  param: any;
   constructor(private api: ApiService) {}
 
   loadFacilities(): Observable<Facility[]> {

@@ -4,4 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true" *ngIf="me">
+  <div class="user-wrapper">
+    <img class="thumbnail" [src]="me.getImageUrl()" />
+    <div class="name-wrapper">{{ me.getName()}}</div>
+  </div>
+</ion-content>

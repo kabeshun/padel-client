@@ -1,0 +1,68 @@
+ion-content {
+  .content-wrapper {
+    margin-top: 124px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .main-image-wrapper {
+      display: flex;
+      justify-content: center;
+      .main-image {
+        width: 80%;
+      }
+    }
+    .sub-title-wrapper {
+      margin-top: 20px;
+      color: var(--ion-color-dark-gray);
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .mail-login-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      margin-top: 48px;
+      border-radius: 4px;
+      padding: 12px 24px 12px 24px;
+      border: var(--ion-color-main-orange) 1px solid;
+      .mail-login-text {
+        color: var(--ion-color-main-orange);
+        font-weight: 500;
+      }
+    }
+    .facebook-login-wrapper {
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 16px;
+      border-radius: 4px;
+      padding: 12px 24px 12px 24px;
+      background-color: #4267b2;
+      .facebook-image {
+        margin-right: 12px;
+        width: 10%;
+      }
+      .facebook-login-text {
+        color: white;
+      }
+    }
+    .apple-login-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      margin-top: 16px;
+      border-radius: 4px;
+      padding: 12px 24px 12px 24px;
+      background-color: black;
+      .apple-image {
+        margin-right: 16px;
+        width: 9%;
+      }
+      .apple-login-text {
+        color: white;
+      }
+    }
+  }
+}

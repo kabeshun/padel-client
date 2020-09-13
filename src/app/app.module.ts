@@ -9,6 +9,8 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+import { AngularTokenModule } from "angular-token";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +19,13 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
+    AngularTokenModule.forRoot({
+      apiBase: "http://0.0.0.0:3000",
+      registerAccountPath: "api/v1/auth",
+      signInPath: "api/v1/auth/sign_in",
+    }),
   ],
   providers: [
     StatusBar,
