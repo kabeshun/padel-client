@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularTokenModule } from "angular-token";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { AngularTokenModule } from "angular-token";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
       apiBase: "http://0.0.0.0:3000",

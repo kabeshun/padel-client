@@ -32,12 +32,17 @@ export class UserService {
     );
   }
 
-  angularTokenRegister(): Observable<any> {
+  angularTokenRegister(
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ): Observable<any> {
     return this.tokenService.registerAccount({
-      login: "example@example.org",
-      password: "secretPassword",
-      passwordConfirmation: "secretPassword",
-      name: "Shungo",
+      name: name,
+      login: email,
+      password: password,
+      passwordConfirmation: passwordConfirmation,
     });
   }
 

@@ -30,23 +30,15 @@ export class OnboardingPage {
     );
   }
 
-  register() {
-    this.userService.angularTokenRegister().subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
   facebookLogin() {
     console.log("facebook");
   }
+
   appleLogin() {
     this.userService.angularTokenSignIn().subscribe(
       (res) => {
         console.log(res);
+        this.navCtrl.navigateForward("/onboarding/register");
       },
       (error) => {
         console.log(error);
