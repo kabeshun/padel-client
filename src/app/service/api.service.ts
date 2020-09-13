@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { share } from "rxjs/operators";
+import { AppConfig } from "../app.config";
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +18,7 @@ export class ApiService {
   };
 
   url: string = "assets";
-  api_url: string = "http://0.0.0.0:3000";
+  api_url: string = AppConfig.API_URL;
 
   constructor(private http: HttpClient) {}
 
