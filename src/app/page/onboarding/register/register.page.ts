@@ -31,13 +31,13 @@ export class RegisterPage implements OnInit {
     this.registerForm = new FormGroup(
       {
         email: new FormControl("", Validators.compose([Validators.required])),
-        name: new FormControl(
+        lastName: new FormControl(
           "",
-          Validators.compose([
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(15),
-          ])
+          Validators.compose([Validators.required])
+        ),
+        firstName: new FormControl(
+          "",
+          Validators.compose([Validators.required])
         ),
         password: new FormControl(
           "",
@@ -59,7 +59,8 @@ export class RegisterPage implements OnInit {
     await loading.present();
     this.userService
       .angularTokenRegister(
-        this.registerForm.value["name"],
+        this.registerForm.value["lastName"],
+        this.registerForm.value["firstName"],
         this.registerForm.value["email"],
         this.registerForm.value["password"],
         this.registerForm.value["passwordConfirmation"]

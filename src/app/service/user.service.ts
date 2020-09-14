@@ -33,13 +33,15 @@ export class UserService {
   }
 
   angularTokenRegister(
-    name: string,
+    last_name: string,
+    first_name: string,
     email: string,
     password: string,
     passwordConfirmation: string
   ): Observable<any> {
     return this.tokenService.registerAccount({
-      name: name,
+      last_name: last_name,
+      first_name: first_name,
       login: email,
       password: password,
       passwordConfirmation: passwordConfirmation,

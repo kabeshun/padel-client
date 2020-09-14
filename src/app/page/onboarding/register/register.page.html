@@ -10,9 +10,15 @@
 <ion-content>
   <div class="content-wrapper">
     <form [formGroup]="registerForm" (onSubmit)="register()">
-      <div class="input-column">
-        <ion-label>名前</ion-label>
-        <input placeholder="Padel Tarou" formControlName="name" />
+      <div class="input-name">
+        <div class="input-column-name">
+          <ion-label>姓</ion-label>
+          <input placeholder="Tanaka" formControlName="lastName" />
+        </div>
+        <div class="input-column-name">
+          <ion-label>名前</ion-label>
+          <input placeholder="Tarou" formControlName="firstName" />
+        </div>
       </div>
       <div class="input-column">
         <ion-label>メールアドレス</ion-label>

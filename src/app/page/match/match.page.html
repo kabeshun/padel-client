@@ -2,6 +2,40 @@
   <ion-toolbar>
     <ion-title> 試合 </ion-title>
   </ion-toolbar>
+  <ion-segment [(ngModel)]="tab" (click)="tabChange()">
+    <ion-segment-button value="match">
+      <div class="segment-wrapper">
+        <ion-label>試合</ion-label>
+      </div>
+    </ion-segment-button>
+    <ion-segment-button value="event">
+      <div class="segment-wrapper">
+        <ion-label>イベント</ion-label>
+      </div>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true" *ngIf="users">
+  <ion-card>
+    <ion-card-header>
+      <div class="sub">Card Subtitle</div>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile, and
+      climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+  <div class="match-box">
+    <div class="title-wrapper">
+      <div class="match-place">GIARDINO</div>
+      <div class="match-time">今日 09:30</div>
+    </div>
+    <div class="users-wrapper">
+      <div class="user-name">{{ users[0].name }}</div>
+      <img class="thumbnail" [src]="users[0].getImageUrl()" />
+    </div>
+  </div>
+</ion-content>
