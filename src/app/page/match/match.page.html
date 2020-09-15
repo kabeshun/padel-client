@@ -17,25 +17,54 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="users">
-  <ion-card>
-    <ion-card-header>
-      <div class="sub">Card Subtitle</div>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile, and
-      climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-  </ion-card>
   <div class="match-box">
     <div class="title-wrapper">
       <div class="match-place">GIARDINO</div>
       <div class="match-time">今日 09:30</div>
     </div>
     <div class="users-wrapper">
-      <div class="user-name">{{ users[0].name }}</div>
-      <img class="thumbnail" [src]="users[0].getImageUrl()" />
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[0].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[0].getImageUrl()" />
+      </div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[1].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[1].getImageUrl()" />
+      </div>
+      <div class="border-line"></div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[2].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[2].getImageUrl()" />
+      </div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[3].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[3].getImageUrl()" />
+      </div>
+    </div>
+  </div>
+  <div class="match-box">
+    <div class="title-wrapper">
+      <div class="match-place">パデルワン</div>
+      <div class="match-time">今日 09:30</div>
+    </div>
+    <div class="users-wrapper">
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[0].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[0].getImageUrl()" />
+      </div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[1].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[1].getImageUrl()" />
+      </div>
+      <div class="border-line"></div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[2].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[2].getImageUrl()" />
+      </div>
+      <div class="user-wrapper">
+        <div class="user-name">{{ users[3].getFirstName() }}</div>
+        <img class="thumbnail" [src]="users[3].getImageUrl()" />
+      </div>
     </div>
   </div>
 </ion-content>

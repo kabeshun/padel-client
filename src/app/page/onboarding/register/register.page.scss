@@ -13,6 +13,7 @@ ion-content {
         .input-column-name {
           display: flex;
           flex-direction: column;
+          //TODO: width %使う
           width: 116px;
           margin: 8px 16px 12px 16px;
           ion-label {

@@ -20,19 +20,37 @@ ion-content {
     .title-wrapper {
       display: flex;
       flex-direction: row;
-      padding: 20px 16px;
+      padding: 12px 16px 8px 16px;
       color: #696969;
       .match-time {
         margin-left: auto;
       }
     }
     .users-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
       color: #696969;
-      .name-wrapper {
+      .border-line {
+        background: #696969;
+        width: 1px;
+        height: 48px;
       }
-      .thumbnail {
-        width: 72px;
-        border-radius: 50%;
+      .user-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 4px 8px 4px;
+        .name-wrapper {
+          font-size: 12px;
+        }
+        .thumbnail {
+          width: 44px;
+          border-radius: 50%;
+        }
       }
     }
   }
