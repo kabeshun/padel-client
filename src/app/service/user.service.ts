@@ -32,6 +32,15 @@ export class UserService {
     );
   }
 
+  loadMe(): Observable<User> {
+    let params = {};
+    return this.api.get("api/v1/users/me", params).pipe(
+      map((data) => {
+        return new User(data);
+      })
+    );
+  }
+
   angularTokenRegister(
     last_name: string,
     first_name: string,
