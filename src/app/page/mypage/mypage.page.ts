@@ -21,7 +21,7 @@ export class MypagePage {
     private alertCtrl: AlertController,
     private navCtrl: NavController
   ) {
-    this.userService.loadUser(1).subscribe((me) => {
+    this.userService.loadMe().subscribe((me) => {
       this.me = new User(me);
     });
   }
@@ -34,6 +34,7 @@ export class MypagePage {
         console.log(res);
         await loading.dismiss();
         this.navCtrl.navigateForward("/onboarding");
+        location.reload();
       },
       async (error) => {
         console.log(error);

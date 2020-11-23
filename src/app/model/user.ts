@@ -1,6 +1,7 @@
 export class User {
   id: number;
-  name: string;
+  last_name: string;
+  first_name: string;
   gender: string;
   email: string;
   phone: string;
@@ -18,8 +19,16 @@ export class User {
     return this.id;
   }
 
+  getLastName(): string {
+    return this.last_name;
+  }
+
+  getFirstName(): string {
+    return this.first_name;
+  }
+
   getName(): string {
-    return this.name;
+    return this.last_name + " " + this.first_name;
   }
 
   getEmail(): string {
@@ -35,6 +44,7 @@ export class User {
   }
 
   getImageUrl(): string {
+    if (!this.image_url) return "assets/icon/default-user.png";
     return this.image_url;
   }
 

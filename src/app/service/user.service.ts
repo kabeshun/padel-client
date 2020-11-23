@@ -32,14 +32,25 @@ export class UserService {
     );
   }
 
+  loadMe(): Observable<User> {
+    let params = {};
+    return this.api.get("api/v1/users/me", params).pipe(
+      map((data) => {
+        return new User(data);
+      })
+    );
+  }
+
   angularTokenRegister(
-    name: string,
+    last_name: string,
+    first_name: string,
     email: string,
     password: string,
     passwordConfirmation: string
   ): Observable<any> {
     return this.tokenService.registerAccount({
-      name: name,
+      last_name: last_name,
+      first_name: first_name,
       login: email,
       password: password,
       passwordConfirmation: passwordConfirmation,
