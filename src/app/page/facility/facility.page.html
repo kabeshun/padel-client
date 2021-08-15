@@ -9,6 +9,15 @@
 </ion-header>
 
 <ion-content *ngIf="facility">
+  <div
+    class="facility-favorite"
+    [ngClass]="{'is-selected': selectFavorite, 'isnt-selected': !selectFavorite}"
+    (click)="setFavorite()"
+  >
+    <div class="favorite-icon">
+      <ion-icon size="large" name="star"></ion-icon>
+    </div>
+  </div>
   <div class="facility-wrapper">
     <div
       class="facility-image"

@@ -4,7 +4,7 @@ import {
   LoadingController,
   NavController,
 } from "@ionic/angular";
-import { User } from "../../model/user";
+import { Me, User } from "../../model/user";
 import { UserService } from "../../service/user.service";
 
 @Component({
@@ -14,6 +14,7 @@ import { UserService } from "../../service/user.service";
 })
 export class MypagePage {
   me: User;
+  favorites: any = [];
 
   constructor(
     private userService: UserService,
@@ -22,7 +23,8 @@ export class MypagePage {
     private navCtrl: NavController
   ) {
     this.userService.loadMe().subscribe((me) => {
-      this.me = new User(me);
+      this.me = new Me(me);
+      this.favorites = this.me.getFavorites();
     });
   }
 

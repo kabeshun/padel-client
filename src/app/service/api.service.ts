@@ -1,5 +1,10 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpParams,
+  HttpHeaders,
+  HttpErrorResponse,
+} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { share } from "rxjs/operators";
 import { AppConfig } from "../app.config";
@@ -77,11 +82,20 @@ export class ApiService {
 
   post(endpoint: string, body: any): Observable<any> {
     this.resetParams();
-    return this.http.post(
-      this.api_url + "/" + endpoint,
-      body,
-      this.defaultRequestOptions
+    let seq = this.http
+      .post(this.api_url + "/" + endpoint, body, this.defaultRequestOptions)
+      .pipe(share());
+    seq.subscribe(
+      (data) => {
+        console.log("*** post : " + endpoint);
+        console.log(data);
+      },
+      (httpError: HttpErrorResponse) => {
+        console.log("*** post error : " + endpoint);
+        console.log(httpError);
+      }
     );
+    return seq;
   }
 
   postFormData(endpoint: string, body: FormData): Observable<any> {

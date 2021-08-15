@@ -23,9 +23,9 @@ export class UserService {
     );
   }
 
-  loadUser(facility_id: number): Observable<User> {
+  loadUser(facilityId: number): Observable<User> {
     let params = {};
-    return this.api.get("api/v1/users/" + facility_id, params).pipe(
+    return this.api.get("api/v1/users/" + facilityId, params).pipe(
       map((data) => {
         return new User(data);
       })
@@ -39,6 +39,20 @@ export class UserService {
         return new User(data);
       })
     );
+  }
+
+  setFavorite(facilityId: number): Observable<any> {
+    let params = {
+      facility_id: facilityId,
+    };
+    return this.api.post("api/v1/favorites/set_favorite", params);
+  }
+
+  removeFavorite(facilityId: number): Observable<any> {
+    let params = {
+      facility_id: facilityId,
+    };
+    return this.api.post("api/v1/favorites/remove_favorite", params);
   }
 
   angularTokenRegister(

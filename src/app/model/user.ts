@@ -6,6 +6,7 @@ export class User {
   email: string;
   phone: string;
   birthday: Date;
+  favorites: any;
   image_url: string;
   created_at: Date;
 
@@ -50,5 +51,17 @@ export class User {
 
   getCreatedAt(): Date {
     return this.created_at;
+  }
+
+  getFavorites(): any {
+    return this.favorites;
+  }
+}
+
+export class Me extends User {
+  favorites: any;
+
+  getFavorites(): any {
+    return this.favorites;
   }
 }

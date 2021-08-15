@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Facility } from "src/app/model/facility";
 import { FacilityService } from "src/app/service/facility.service";
 import { Location } from "@angular/common";
-
+import { UserService } from "src/app/service/user.service";
+import { AlertController, LoadingController } from "@ionic/angular";
 @Component({
   selector: "app-facility",
   templateUrl: "./facility.page.html",
@@ -14,11 +15,15 @@ export class FacilityPage {
   facilityId: number;
   targetTime: string;
   times: any[];
+  selectFavorite: boolean = true;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private facilityService: FacilityService,
-    private location: Location
+    private location: Location,
+    private userService: UserService,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {
     this.checkUrlAndQueryParams();
 
@@ -42,10 +47,64 @@ export class FacilityPage {
     ];
   }
 
+  ionViewWillEnter() {
+    this.facilityService.loadFacility(this.facilityId).subscribe((facility) => {
+      console.error(facility);
+      this.facility = new Facility(facility);
+      this.selectFavorite = this.facility.isFavorite();
+    });
+  }
+
+  async setFavorite() {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+
+    if (this.selectFavorite) {
+      this.userService.removeFavorite(this.facility.id).subscribe(
+        async () => {
+          await loading.dismiss();
+          const alert = await this.alertCtrl.create({
+            subHeader: this.facility.name + "をお気に入りからはずしました。",
+            buttons: [
+              {
+                text: "OK",
+              },
+            ],
+          });
+          await alert.present();
+          this.selectFavorite = !this.selectFavorite;
+        },
+        async () => {
+          await loading.dismiss();
+        }
+      );
+    } else {
+      this.userService.setFavorite(this.facility.id).subscribe(
+        async () => {
+          await loading.dismiss();
+          const alert = await this.alertCtrl.create({
+            subHeader: this.facility.name + "をお気に入りにしました。",
+            buttons: [
+              {
+                text: "OK",
+              },
+            ],
+          });
+          await alert.present();
+          this.selectFavorite = !this.selectFavorite;
+        },
+        async () => {
+          await loading.dismiss();
+        }
+      );
+    }
+  }
+
   checkUrlAndQueryParams(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.facility = this.router.getCurrentNavigation().extras.state.facility;
+        this.facility =
+          this.router.getCurrentNavigation().extras.state.facility;
       }
 
       if (params.id) {
@@ -55,6 +114,7 @@ export class FacilityPage {
             .loadFacility(this.facilityId)
             .subscribe((facility) => {
               this.facility = new Facility(facility);
+              this.selectFavorite = this.facility.isFavorite();
             });
         }
       }

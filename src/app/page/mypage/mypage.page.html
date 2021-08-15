@@ -12,4 +12,13 @@
     <img class="thumbnail" [src]="me.getImageUrl()" />
     <div class="name-wrapper">{{ me.getName()}}</div>
   </div>
+  <div class="favorites">
+    お気に入りリスト
+    <ion-item
+      class="favorite"
+      *ngFor="let favorite of favorites; let i = index"
+    >
+      <ion-label class="favorite-text">{{ favorite.name }}</ion-label>
+    </ion-item>
+  </div>
 </ion-content>

@@ -5,6 +5,7 @@ export class Facility {
   address: string;
   image_url: string;
   created_at: Date;
+  is_favorite: boolean;
 
   constructor(fields: any) {
     for (const f in fields) {
@@ -34,5 +35,9 @@ export class Facility {
 
   getCreatedAt(): Date {
     return this.created_at;
+  }
+
+  isFavorite(): boolean {
+    return this.is_favorite;
   }
 }

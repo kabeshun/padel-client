@@ -1,4 +1,24 @@
 ion-content {
+  .facility-favorite {
+    position: absolute;
+    z-index: 1;
+    border-radius: 100%;
+    padding: 8px;
+    top: 20px;
+    right: 30px;
+    &.is-selected {
+      background: lightgray;
+      ion-icon {
+        color: white;
+      }
+    }
+    &.isnt-selected {
+      background: white;
+      ion-icon {
+        color: var(--ion-color-danger);
+      }
+    }
+  }
   .facility-wrapper {
     padding-top: 8px;
     display: flex;
